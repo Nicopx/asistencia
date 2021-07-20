@@ -1,6 +1,9 @@
 <?php 
     $titulo ='Index'; //seteo el titulo para que sea dinamico en cada pagina
     require_once 'includes/header.php';
+    require_once 'db/conn.php';
+
+    $resultado = $crud->verEspecialidades();
 ?>
 
     <h1 class="text-center">Registro para la conferencia</h1>
@@ -31,10 +34,9 @@
         <div class="mb-3">
             <label for="especialidad" class="form-label">Área de Especialidad</label>
             <select class="form-select" id="especialidad" name="especialidad">
-                <option selected>Seleccione una</option>
-                <option value="Base de Datos">Base de Datos</option>
-                <option value="Desarrollo Web">Desarrollo Web</option>
-                <option value="Administración Web">Administración Web</option>
+               <?php while ($res = $resultado->fetch(PDO::FETCH_ASSOC)) {?>
+                   <option value="<?php echo $res['especialidad_id']?>"><?php echo $res['nombre']?></option>
+               <?php } ?>
             </select>
         </div>
         <div class="mb-3">
@@ -47,7 +49,7 @@
             <input type="text" class="form-control" id="numero_contacto" name="numero_contacto">
             <div id="numero_ayuda" class="form-text">Tu número de teléfono no se compartira con nadie.</div>
         </div>
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="btn btn-dark">Submit</button>
     </form>
 
 <?php require_once 'includes/footer.php';?>
