@@ -6,30 +6,26 @@
     //traigo los asistentes 
     $resultado = $crud->verAsistentes();
 ?>
-
+<div class="container">
 <table class="table">
     <tr>
         <th>#</th>
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Fecha de Nacimiento</th>
-        <th>Email</th>
-        <th>Celular</th>
         <th>Especialidad</th>
+        <th>Acciones</th>
     </tr>
     <?php while ($res = $resultado->fetch(PDO::FETCH_ASSOC)) {# convierte resultado en un array asociativo?>
         <tr>
             <td><?php echo $res['id'] ?></td>
             <td><?php echo $res['nombres'] ?></td>
             <td><?php echo $res['apellido'] ?></td>
-            <td><?php echo $res['fecha_nacimiento'] ?></td>
-            <td><?php echo $res['email'] ?></td>
-            <td><?php echo $res['celular'] ?></td>
-            <td><?php echo $res['nombre']?></td>
+            <td><?php echo $res['nombre']?></td><!--Especialidad -->
+            <td><a href="vista.php" class="btn btn-primary">Ver</a></td>
         </tr>
     <?php } ?>
 </table>
-
+</div>
 
 
 
