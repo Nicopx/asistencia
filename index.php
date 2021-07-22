@@ -34,6 +34,7 @@
         <div class="mb-3">
             <label for="especialidad" class="form-label">Área de Especialidad</label>
             <select class="form-select" id="especialidad" name="especialidad">
+                <option value="default">------ Seleccione una ------</option>
                <?php while ($res = $resultado->fetch(PDO::FETCH_ASSOC)) {?>
                    <option value="<?php echo $res['especialidad_id']?>"><?php echo $res['nombre']?></option>
                <?php } ?>
