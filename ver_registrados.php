@@ -3,7 +3,7 @@
     require_once 'includes/header.php';
     require_once 'db/conn.php';
 
-    //traigo los asistentes 
+    //traigo los asistentes
     $resultado = $crud->verAsistentes();
 ?>
 <div class="container">
@@ -17,17 +17,16 @@
     </tr>
     <?php while ($res = $resultado->fetch(PDO::FETCH_ASSOC)) {# convierte resultado en un array asociativo?>
         <tr>
+            <!-- acceso a traves de cada key al valor.-->
             <td><?php echo $res['id'] ?></td>
             <td><?php echo $res['nombres'] ?></td>
             <td><?php echo $res['apellido'] ?></td>
             <td><?php echo $res['nombre']?></td><!--Especialidad -->
-            <td><a href="vista.php" class="btn btn-primary">Ver</a></td>
+            <td><a href="vista.php?id=<?php echo $res['id']?>" class="btn btn-primary">Ver</a></td> <!--- le paso el id del la persona registrada para ver sus detalles-->
         </tr>
     <?php } ?>
 </table>
 </div>
-
-
 
 
 <br>
