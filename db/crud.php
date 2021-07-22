@@ -13,7 +13,7 @@
         public function insert($nomb, $apell, $fecha_n,$email, $cel, $especialidad){
             try {
                 //definición de la declaracion sql a ejecutar
-                $sql = "INSERT INTO asistentes (nombre, apellido, fecha_nacimiento, email, celular, especialidad_id) VALUES (:nomb, :apell, :fecha_n, :email, :cel, :especialidad)";
+                $sql = "INSERT INTO asistentes (nombres, apellido, fecha_nacimiento, email, celular, especialidad_id) VALUES (:nomb, :apell, :fecha_n, :email, :cel, :especialidad)";
                 //preparo la declaracion sql para ejecucion
                 $stmt = $this->db->prepare($sql);
 
@@ -44,6 +44,18 @@
                 echo $e->getMessage();
                 return false; //si hay error retorna false
             }
+        }
+
+        public function verDetallesAsistentes($id){
+                //une los datos de ambas tablas con lo que tienen en comúm 
+                //que es la FK le paso el id de la especilidad de la tabla de asistentens y la referencion en la tabla de especialidades
+                //entonces puedo acceder al valor a traves del nombre la especialidad
+                $sql = "SELECT * FROM `asistentes` a inner join especialidades s on a.especialidad_id = s.especialidad_id WHERE  id = :id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id', $id);
+                $stmt->execute();
+                $resultado = $stmt->fetch();//fetcheo el resultado dentro de la variable.
+                return $resultado;
         }
 
         public function verEspecialidades(){
