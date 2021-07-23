@@ -33,6 +33,32 @@
             }
         }
 
+        //actualiza los datos de un asistente
+        public function editarAsistente($id, $nomb, $apell, $fecha_n, $email, $cel, $especialidad) {
+           try{ 
+                $sql = "UPDATE `asistentes` SET `nombres`=:nomb,`apellido`=:apell,`fecha_nacimiento`=:fecha_n,
+                `email`=:email,`celular`=:cel,`especialidad_id`=:especialidad WHERE id:id";
+                //preparo la declaracion sql para ejecucion
+                $stmt = $this->db->prepare($sql);
+
+                    //Bindeo cada placehober con el valor que se pasa por parametro.
+                    $stmt->bindparam(':id',$id);
+                    $stmt->bindparam(':nomb',$nomb);
+                    $stmt->bindparam(':apell',$apell);
+                    $stmt->bindparam(':fecha_n',$fecha_n);
+                    $stmt->bindparam(':email',$email);
+                    $stmt->bindparam(':cel',$cel);
+                    $stmt->bindparam(':especialidad',$especialidad);
+
+                    $stmt->execute();
+                    return true;//si stmt es exitoso retorna true
+
+           }catch (PDOException $e) {
+            echo $e->getMessage();
+            return false; //si hay error retorna false
+            }
+        }
+
         public function verAsistentes(){
             try {
                 //une los datos de ambas tablas con lo que tienen en comun 
