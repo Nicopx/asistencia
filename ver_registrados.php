@@ -22,7 +22,10 @@
             <td><?php echo $res['nombres'] ?></td>
             <td><?php echo $res['apellido'] ?></td>
             <td><?php echo $res['nombre']?></td><!--Especialidad -->
-            <td><a href="vista.php?id=<?php echo $res['id']?>" class="btn btn-primary">Ver</a></td> <!--- le paso el id del la persona registrada para ver sus detalles-->
+            <td>
+                <a href="vista.php?id=<?php echo $res['id']?>" class="btn btn-primary">Ver</a> <!--- le paso el id del la persona registrada para ver sus detalles-->
+                <a href="editar.php?id=<?php echo $res['id']?>" class="btn btn-warning">Editar</a>
+            </td> 
         </tr>
     <?php } ?>
 </table>
