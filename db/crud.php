@@ -37,7 +37,7 @@
         public function editarAsistente($id, $nomb, $apell, $fecha_n, $email, $cel, $especialidad) {
            try{ 
                 $sql = "UPDATE `asistentes` SET `nombres`=:nomb,`apellido`=:apell,`fecha_nacimiento`=:fecha_n,
-                `email`=:email,`celular`=:cel,`especialidad_id`=:especialidad WHERE id:id";
+                `email`=:email,`celular`=:cel,`especialidad_id`=:especialidad WHERE id=:id";
                 //preparo la declaracion sql para ejecucion
                 $stmt = $this->db->prepare($sql);
 
@@ -94,6 +94,22 @@
                 return false; //si hay error retorna false
             }
         }
+
+
+        public function eliminarAsistentes($id){
+            try {
+                //declaracion de la consulta
+                $sql = "DELETE FROM `asistentes` WHERE id=:id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id', $id);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
+
 
     }
 
