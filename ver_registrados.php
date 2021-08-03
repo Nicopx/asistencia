@@ -25,6 +25,7 @@
             <td>
                 <a href="vista.php?id=<?php echo $res['id']?>" class="btn btn-primary">Ver</a> <!--- le paso el id del la persona registrada para ver sus detalles-->
                 <a href="editar.php?id=<?php echo $res['id']?>" class="btn btn-warning">Editar</a>
+                <a onclick="return confirm('¿Seguro que desea eliminar este registro?');" href="eliminar.php?id=<?php echo $res['id']?>" class="btn btn-danger">Eliminar</a>
             </td> 
         </tr>
     <?php } ?>
