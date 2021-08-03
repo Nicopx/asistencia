@@ -17,7 +17,7 @@
 
     //redirijo a index.php
     if($resultado){
-            header("Location: index.php");
+            header("Location: ver_registrados.php");
     }
 
     }else {
