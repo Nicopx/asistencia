@@ -21,15 +21,15 @@
     <form method="post" action="success.php"> 
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="input_nombre" name="input_nombre">
+            <input required type="text" class="form-control" id="input_nombre" name="input_nombre">
         </div>
         <div class="mb-3">
             <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="input_apellido" name="input_apellido">
+            <input required type="text" class="form-control" id="input_apellido" name="input_apellido">
         </div>
         <div class="mb-3">
             <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
-            <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+            <input required type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
         </div>
         <div class="mb-3">
             <label for="especialidad" class="form-label">Área de Especialidad</label>
@@ -42,7 +42,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Direccón de Email</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input required type="email" class="form-control" id="email" name="email">
             <div id="emailHelp" class="form-text">Tu dirección de email no se compartira con nadie.</div>
         </div>
         <div class="mb-3">

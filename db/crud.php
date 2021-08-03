@@ -3,13 +3,12 @@
    {
         private $db;
         
-        //constructor para inicializar la variable privada db con conexion de la db
+        //constructor para inicializar la conexion de la db
         function __construct($conn){
             $this -> db = $conn;
         }
 
-        //parametros que recibe el metood insert son los que el usuario ingresa 
-        // en el formulario de registro.
+        //parametros que recibe el metodo insert son los que el usuario ingresa en el formulario de registro.
         public function insert($nomb, $apell, $fecha_n,$email, $cel, $especialidad){
             try {
                 //definición de la declaracion sql a ejecutar
@@ -59,6 +58,7 @@
             }
         }
 
+        //Trae la lista de asistentes con su especialidad asociada
         public function verAsistentes(){
             try {
                 //une los datos de ambas tablas con lo que tienen en comun 
@@ -72,18 +72,26 @@
             }
         }
 
+        //Trae el detalle de un asistente con su especialidad asociada
         public function verDetallesAsistentes($id){
                 //une los datos de ambas tablas con lo que tienen en comúm 
                 //que es la FK le paso el id de la especilidad de la tabla de asistentens y la referencion en la tabla de especialidades
                 //entonces puedo acceder al valor a traves del nombre la especialidad
-                $sql = "SELECT * FROM `asistentes` a inner join especialidades s on a.especialidad_id = s.especialidad_id WHERE  id = :id";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindparam(':id', $id);
-                $stmt->execute();
-                $resultado = $stmt->fetch();//fetcheo el resultado dentro de la variable.
-                return $resultado;
+                try {
+                    $sql = "SELECT * FROM `asistentes` a inner join especialidades s on a.especialidad_id = s.especialidad_id WHERE  id = :id";
+                    $stmt = $this->db->prepare($sql);
+                    $stmt->bindparam(':id', $id);
+                    $stmt->execute();
+                    $resultado = $stmt->fetch();//fetcheo el resultado dentro de la variable.
+                    return $resultado;
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                    return false; //si hay error retorna false
+                }
+                
         }
 
+        //Trae la lista de especialidades
         public function verEspecialidades(){
             try {
                 $sql = "SELECT * FROM `especialidades`";
@@ -95,7 +103,7 @@
             }
         }
 
-
+        //elimina el asistente seleccionado.
         public function eliminarAsistentes($id){
             try {
                 //declaracion de la consulta
@@ -110,8 +118,6 @@
             }
         }
 
-
     }
-
     
 ?>

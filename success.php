@@ -15,10 +15,10 @@
         $isSuccess = $crud->insert($nombre, $apellido, $fecha_n, $email, $celular, $especialidad);
 
         if ($isSuccess) {
-           echo '<h1 class="text-center text-success">¡Registración Existosa!</h1>';
+            include 'includes/successmsj.php';
         }
         else {
-            echo '<h1 class="text-center text-danger">Error procesando la solicitud!</h1>';
+            include 'includes/errormsj.php';
         }
     }
 ?>

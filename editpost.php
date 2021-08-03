@@ -21,7 +21,8 @@
     }
 
     }else {
-        echo 'error';
+        //echo 'error';
+        include 'includes/errormsj.php';
     }
 
 

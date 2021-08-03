@@ -35,6 +35,10 @@
             <a href="#" class="card-link">GitHub</a>
         </div>
     </div>
+    <br>
+    <a href="ver_registrados.php" class="btn btn-info">Volver</a> <!--- le paso el id del la persona registrada para ver sus detalles-->
+    <a href="editar.php?id=<?php echo $resultado['id']?>" class="btn btn-warning">Editar</a>
+    <a onclick="return confirm('¿Seguro que desea eliminar este registro?');" href="eliminar.php?id=<?php echo $resultado['id']?>" class="btn btn-danger">Eliminar</a>
 <?php } ?>
 
 <?php require_once 'includes/footer.php';?>

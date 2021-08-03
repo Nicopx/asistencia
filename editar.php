@@ -6,7 +6,10 @@
     $resultado = $crud->verEspecialidades();
 
     if (!isset($_GET['id'])) {
-        echo 'error';
+        //echo 'error';
+        include 'includes/errormsj.php';
+        //redirecion para prevenir la navegacion desde la ruta hacia esta pagina
+        header("Location: ver_registrados.php");
     }else {
         $id = $_GET['id'];
         $asistentes = $crud->verDetallesAsistentes($id); //guardo los detalles del asistente seleccionado por id
