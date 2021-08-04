@@ -1,9 +1,17 @@
 <?php 
-    //conexion con la base de datos usando PDO
-    $host = '127.0.0.1'; //localhost
+    //conexion local con la base de datos usando PDO 
+    /*$host = '127.0.0.1'; //localhost
     $db = 'asistencia_db';
     $user = 'root';
     $pass = '';
+    $charset = 'utf8mb4';*/
+
+
+    //Conexion remota 
+    $host = 'remotemysql.com'; //localhost
+    $db = 'Uit8L1iPnO';
+    $user = 'Uit8L1iPnO';
+    $pass = 'kTzU4yYSmo';
     $charset = 'utf8mb4';
 
     //dsn contiene los datos de conexión.
