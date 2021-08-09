@@ -17,7 +17,7 @@
         - numero telefonico.
 
     -->
-
+<div class="container">
     <form method="post" action="success.php"> 
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
@@ -52,6 +52,7 @@
         </div>
         <button type="submit" name="submit" class="btn btn-dark">Submit</button>
     </form>
+</div>
 
 <?php require_once 'includes/footer.php';?>
   
