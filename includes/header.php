@@ -1,3 +1,10 @@
+<?php 
+//Esto incluye el archivo de sesion. Este archivo contiene codigo que inicializa la sesion
+//Teniendo esto en el header, se incluirá en cada página, permitiendo la capacidad de que las sesiones sean usadas
+//en cada a través del toda la página.
+include_once 'includes/session.php';
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,17 +21,21 @@
   <body>
     <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.php">Conferencia IT</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-          <a class="nav-link" href="ver_registrados.php">Ver Asistentes</a>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.php">Conferencia IT</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link" href="ver_registrados.php">Ver Asistentes</a>
+          </div>
+        </div>
+        <div class="navbar-nav mr-auto">
+            <a class="nav-link active" aria-current="page" href="login.php">Login</a>
+          </div>
         </div>
       </div>
-    </div>
-</nav>
+    </nav>
 <br>

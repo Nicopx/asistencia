@@ -28,6 +28,6 @@
         })
         ;
       });
-    </script>
+</script>
 </body>
 </html>
