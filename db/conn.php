@@ -37,6 +37,7 @@
     require_once 'user.php';
     $crud = new crud($pdo);
     $user = new user($pdo);
+    
     //cargo el usuario admin por primera vez
     $user->insertUser("admin", "admin");
 ?>
