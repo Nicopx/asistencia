@@ -33,7 +33,14 @@ include_once 'includes/session.php';
           </div>
         </div>
         <div class="navbar-nav mr-auto">
+          <?php 
+            if (!isset($_SESSION['id'])) {
+          ?>
             <a class="nav-link active" aria-current="page" href="login.php">Login</a>
+          <?php }else {?>
+            <a class="nav-link active" aria-current="page" href="#"><span class="text-light bg-dark">Hola <?php echo $_SESSION['nombre_usuario']?>!</span></a>
+            <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
+          <?php }?>
           </div>
         </div>
       </div>
