@@ -15,7 +15,9 @@
                     return false;
                 }else {
                     //encripto el pass concatenandolo con el nombre de usuario
-                    $new_pass = password_hash($contrasena.$nombre_usuario, PASSWORD_DEFAULT);
+                   //$new_pass = password_hash($contrasena. $nombre_usuario, PASSWORD_BCRYPT);
+                   $new_pass = md5($contrasena. $nombre_usuario);
+                   
                     //definición de la declaracion sql a ejecutar
                      $sql = "INSERT INTO usuarios (nombre_usuario, contrasena) VALUES (:nombre_usuario, :contrasena)";
                     //preparo la declaracion sql para ejecucion
