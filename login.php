@@ -6,13 +6,14 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = strtolower(trim($_POST['nombre_user']));
         $password = $_POST['password'];
-        $new_pass = password_hash($password.$username, PASSWORD_DEFAULT);
+        
+        //$new_pass1 = password_hash($password1. $username, PASSWORD_BCRYPT);
+        $new_pass = md5($password. $username);
         $resultado = $user->getUser($username, $new_pass);
 
-    
         if (!$resultado) {
             echo '<div class="alert alert-danger">Usuario o Contraseña incorectas! Intente nuevamente</div>';
-            var_dump($resultado);
+            //var_dump($resultado);
         }else {
             $_SESSION['nombre_usuario'] = $username;
             $_SESSION['id'] = $resultado['id'];
@@ -45,6 +46,24 @@
         <input type="submit" value="Login" class="btn btn-primary btn-block"><br>
         <a href="#">Olvido su contraseña</a>
     </form> 
+   <!--  <form action="<?php echo htmlentities($_SERVER['PHP_SELF'])?>" method="post">
+        <table class="table">
+            <tr>
+                <td><label for="username">Username: *</label></td>
+                <td><input type="text" name="nombre_user" class="form-control" id="nombre_user" value="<?php if($_SERVER['REQUEST_METHOD'] == 'POST') echo $_POST['nombre_user'];?>">
+            
+                <?php if(empty($username) && $_SERVER['REQUEST_METHOD'] == 'POST') echo "<p class='text-danger'>$username_error</p>";?>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">Password: *</label></td>
+                <td><input type="password" name="password" class="form-control" id="password"></td>
+                <?php if(empty($password) && isset($password_error)) echo "<p class='text-danger'>$password_error</p>"; ?>
+            </tr>
+        </table> <br><br>
+        <input type="submit" value="login" class="btn btn-primary btn-block"><br>
+        <a href="#">¿No recuerda su contraseña?</a>
+    </form> -->
 </div>
     <br><br>
 <?php require_once 'includes/footer.php';?>
