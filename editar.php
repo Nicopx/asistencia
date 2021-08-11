@@ -1,6 +1,7 @@
 <?php 
     $titulo ='Editar '; //seteo el titulo para que sea dinamico en cada pagina
     require_once 'includes/header.php';
+    require_once 'includes/auth_check.php';
     require_once 'db/conn.php';
 
     $resultado = $crud->verEspecialidades();
@@ -16,7 +17,7 @@
     
     
 ?>
-
+<div class="container">
     <h1 class="text-center">Editar Registro</h1>
 
     <form method="post" action="editpost.php"> 
@@ -58,8 +59,8 @@
         </div>
         <button type="submit" name="submit" class="btn btn-success">Guardar Cambios</button>
     </form>
-<?php } ?>
-
+    <?php } ?>
+</div>
 <br>
 <br>
 <?php require_once 'includes/footer.php';?>

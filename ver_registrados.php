@@ -1,6 +1,7 @@
 <?php 
     $titulo ='Asistentes'; //seteo el titulo para que sea dinamico en cada pagina
     require_once 'includes/header.php';
+    require_once 'includes/auth_check.php';
     require_once 'db/conn.php';
 
     //traigo los asistentes
