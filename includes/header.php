@@ -29,7 +29,12 @@ include_once 'includes/session.php';
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-            <a class="nav-link" href="ver_registrados.php">Ver Asistentes</a>
+            <?php 
+            //Si la sesion de usuario está existe se muestra el link para ver los asistentes
+            if (isset($_SESSION['id'])) {
+            ?>
+              <a class="nav-link" href="ver_registrados.php">Ver Asistentes</a>
+            <?php } ?>
           </div>
         </div>
         <div class="navbar-nav mr-auto">
