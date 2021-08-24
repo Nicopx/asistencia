@@ -103,6 +103,21 @@
             }
         }
 
+        //Trae la especialidad seleccionada por id
+        public function verEspecialidadesById($id){
+            try {
+                $sql = "SELECT * FROM `especialidades` WHERE especialidad_id = :id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id', $id);
+                $stmt->execute();
+                $resultado = $stmt->fetch(); 
+                return $resultado;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false; //si hay error retorna false
+            }
+        }
+
         //elimina el asistente seleccionado.
         public function eliminarAsistentes($id){
             try {
