@@ -15,30 +15,34 @@
 ?>
 
     <?php ?>
+    <div class="container">
         <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">
-                <?php echo $resultado['nombres']. ' ' . $resultado['apellido'];?>
-            </h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-                Email: <?php echo $resultado['email'] ?>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted">
-                Especialidad: <?php echo $resultado['nombre'] ?>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted">
-                Fecha de Nacimiento: <?php echo $resultado['fecha_nacimiento'] ?>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted">
-                Contacto: <?php echo $resultado['celular'] ?>
-            </h6>
-            <a href="#" class="card-link">GitHub</a>
+            <div class="card-body">
+                <h5 class="card-title">
+                    <?php echo $resultado['nombres']. ' ' . $resultado['apellido'];?>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Email: <?php echo $resultado['email'] ?>
+                </h6>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Especialidad: <?php echo $resultado['nombre'] ?>
+                </h6>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Fecha de Nacimiento: <?php echo $resultado['fecha_nacimiento'] ?>
+                </h6>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Contacto: <?php echo $resultado['celular'] ?>
+                </h6>
+                <a href="#" class="card-link">GitHub</a>
+            </div>
         </div>
+    
+        <br>
+        <a href="ver_registrados.php" class="btn btn-info">Volver</a> 
+        <!--- le paso el id del la persona registrada para ver sus detalles-->
+        <a href="editar.php?id=<?php echo $resultado['id']?>" class="btn btn-warning">Editar</a>
+        <a onclick="return confirm('¿Seguro que desea eliminar este registro?');" href="eliminar.php?id=<?php echo $resultado['id']?>" class="btn btn-danger">Eliminar</a>
     </div>
-    <br>
-    <a href="ver_registrados.php" class="btn btn-info">Volver</a> <!--- le paso el id del la persona registrada para ver sus detalles-->
-    <a href="editar.php?id=<?php echo $resultado['id']?>" class="btn btn-warning">Editar</a>
-    <a onclick="return confirm('¿Seguro que desea eliminar este registro?');" href="eliminar.php?id=<?php echo $resultado['id']?>" class="btn btn-danger">Eliminar</a>
 <?php } ?>
 
 <?php require_once 'includes/footer.php';?>
