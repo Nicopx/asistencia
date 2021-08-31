@@ -12,8 +12,18 @@
         $email = $_POST['email'];
         $celular = $_POST['numero_contacto'];
         $especialidad = $_POST['especialidad'];
+     
+
+        $imagen_orig = $_FILES['avatar']['tmp_name']; //imagen original
+        $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION); //guardo el tipo de extension
+        $imagenes_dir = 'uploads/';
+        $destinacion = "$imagenes_dir$celular.$extension";
+        move_uploaded_file($imagen_orig, $destinacion);
+
+        //exit();//pauso la ejecucion
+
         //llamo a la funcion insert 
-        $isSuccess = $crud->insert($nombre, $apellido, $fecha_n, $email, $celular, $especialidad);
+        $isSuccess = $crud->insert($nombre, $apellido, $fecha_n, $email, $celular, $especialidad, $destinacion);
         $especialidadNombre= $crud->verEspecialidadesById($especialidad);
 
         if ($isSuccess) {
@@ -26,7 +36,8 @@
     }
 ?>
 
-    <div class="card" style="width: 18rem;">
+    <img src="<?php echo  $destinacion; ?> " style="width: 18rem; hight: 18rem;" />
+    <div class="card" style="width: 18rem; center">
                 <div class="card-body">
                     <h5 class="card-title">
                         <?php echo $nombre. ' ' . $apellido;?>
@@ -45,7 +56,5 @@
                     </h6>
                     <a href="#" class="card-link">GitHub</a>
     </div>
-<br>
-<br>
-<br>
+
 <?php require_once 'includes/footer.php';?>
