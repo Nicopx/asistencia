@@ -9,10 +9,10 @@
         }
 
         //parametros que recibe el metodo insert son los que el usuario ingresa en el formulario de registro.
-        public function insert($nomb, $apell, $fecha_n,$email, $cel, $especialidad){
+        public function insert($nomb, $apell, $fecha_n,$email, $cel, $especialidad, $destinacion){
             try {
                 //definición de la declaracion sql a ejecutar
-                $sql = "INSERT INTO asistentes (nombres, apellido, fecha_nacimiento, email, celular, especialidad_id) VALUES (:nomb, :apell, :fecha_n, :email, :cel, :especialidad)";
+                $sql = "INSERT INTO `asistentes` (`nombres`, `apellido`, `fecha_nacimiento`, `email`, `celular`, `especialidad_id`, `avatar_path`) VALUES (:nomb, :apell, :fecha_n, :email, :cel, :especialidad, :avatar)";
                 //preparo la declaracion sql para ejecucion
                 $stmt = $this->db->prepare($sql);
 
@@ -23,6 +23,7 @@
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':cel',$cel);
                 $stmt->bindparam(':especialidad',$especialidad);
+                $stmt->bindparam(':avatar',$destinacion);
 
                 $stmt->execute();
                 return true;//si stmt es exitoso retorna true
